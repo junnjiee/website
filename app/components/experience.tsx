@@ -11,7 +11,7 @@ type ExperienceItem = {
 const experiences: ExperienceItem[] = [
   {
     period: "2024 - 2026",
-    title: "Served the Army",
+    title: "Singapore Army",
     organisation: "",
     href: "",
     description:
@@ -53,7 +53,7 @@ export function Experience() {
   return (
     <div className="mt-10 space-y-6">
       <h2 className="text-sm font-medium uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
-        Life so Far
+        Experience
       </h2>
       <div className="space-y-5 border-l border-neutral-200 pl-4 dark:border-neutral-800">
         {experiences.map((experience) => (

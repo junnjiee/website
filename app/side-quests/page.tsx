@@ -14,17 +14,11 @@ const sideQuests: SideQuest[] = [
     href: "https://github.com/junnjiee/pi-exa",
   },
   {
-    name: "Compendium",
-    description:
-      "A digital collection of notes, information and knowledge related to my interests.",
-    href: "https://junnjiee-compendium.vercel.app/",
-  },
-  {
     name: "GovTech GeekOut Hackathon 2023",
     description: (
       <>
-        3rd place. Explored using LLMs to democratize education, won a speaker,
-        and met really cool people like{" "}
+        3rd place. Explored using LLMs to democratize education, and met really
+        cool people like{" "}
         <a
           href="https://github.com/euanlimzx"
           target="_blank"
