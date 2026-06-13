@@ -1,21 +1,23 @@
-import { BlogPosts } from 'app/components/posts'
+import { Experience } from "app/components/experience";
+import { BlogPosts } from "app/components/posts";
 
 export default function Page() {
   return (
     <section>
       <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        My Portfolio
+        Hello, I'm Jun Jie
       </h1>
       <p className="mb-4">
-        {`I'm a Vim enthusiast and tab advocate, finding unmatched efficiency in
-        Vim's keystroke commands and tabs' flexibility for personal viewing
-        preferences. This extends to my support for static typing, where its
-        early error detection ensures cleaner code, and my preference for dark
-        mode, which eases long coding sessions by reducing eye strain.`}
+        {` I'm a builder from Singapore, currently studying Computer Science at 
+        NUS. I enjoy building and understanding interesting and/or useful software`}
       </p>
+      {/* <p className="mb-4"> */}
+      {/*   {`Once in a while, I do touch grass and spend time on mountains.`} */}
+      {/* </p> */}
       <div className="my-8">
+        <Experience />
         <BlogPosts />
       </div>
     </section>
-  )
+  );
 }
