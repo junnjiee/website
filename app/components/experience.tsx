@@ -15,7 +15,7 @@ const experiences: ExperienceItem[] = [
     organisation: "",
     href: "",
     description:
-      "Sometimes I get to do cool stuff, like fast roping down a chopper or jumping out of a plane. Still learning how to embrace the suck.",
+      "Sometimes I get to do cool stuff, like fast roping down a chopper or jumping out of a plane. Mostly walked a lot.",
   },
   {
     period: "Summer 2024",
