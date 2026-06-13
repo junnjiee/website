@@ -30,7 +30,7 @@ const experiences: ExperienceItem[] = [
           href="https://www.sciencedirect.com/science/article/abs/pii/S0169260719307904"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline decoration-neutral-400 underline-offset-2 transition-all hover:decoration-neutral-800 dark:decoration-neutral-600 dark:hover:decoration-neutral-200"
+          className="text-link"
         >
           Dense-Inception U-Net
         </a>{" "}
@@ -39,7 +39,7 @@ const experiences: ExperienceItem[] = [
           href="https://arxiv.org/abs/1706.05587"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline decoration-neutral-400 underline-offset-2 transition-all hover:decoration-neutral-800 dark:decoration-neutral-600 dark:hover:decoration-neutral-200"
+          className="text-link"
         >
           DeepLabV3
         </a>

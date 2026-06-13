@@ -29,7 +29,7 @@ const sideQuests: SideQuest[] = [
           href="https://github.com/euanlimzx"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline decoration-neutral-400 underline-offset-2 transition-all hover:decoration-neutral-800 dark:decoration-neutral-600 dark:hover:decoration-neutral-200"
+          className="text-link"
         >
           @euanlimzx
         </a>{" "}
@@ -38,7 +38,7 @@ const sideQuests: SideQuest[] = [
           href="https://github.com/hrtowii"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline decoration-neutral-400 underline-offset-2 transition-all hover:decoration-neutral-800 dark:decoration-neutral-600 dark:hover:decoration-neutral-200"
+          className="text-link"
         >
           @hrtowii
         </a>
