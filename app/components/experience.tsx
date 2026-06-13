@@ -15,7 +15,7 @@ const experiences: ExperienceItem[] = [
     organisation: "",
     href: "",
     description:
-      "Sometimes I get to do the cool stuff, like fast roping down a chopper or jumping out of a plane. But I mostly walked. A lot.",
+      "Sometimes I get to do cool stuff, like fast roping down a chopper or jumping out of a plane. Still learning how to embrace the suck.",
   },
   {
     period: "Summer 2024",
@@ -24,8 +24,8 @@ const experiences: ExperienceItem[] = [
     href: "https://www.a-star.edu.sg/artc",
     description: (
       <>
-        Worked on training segmentation CNNs for an industrial image
-        segmentation task, referencing open-source architectures such as{" "}
+        Developed CNN-based models for an industrial image segmentation task,
+        referencing open-source architectures such as{" "}
         <a
           href="https://www.sciencedirect.com/science/article/abs/pii/S0169260719307904"
           target="_blank"
@@ -53,7 +53,7 @@ export function Experience() {
   return (
     <div className="mt-10 space-y-6">
       <h2 className="text-sm font-medium uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
-        My Life
+        Life so Far
       </h2>
       <div className="space-y-5 border-l border-neutral-200 pl-4 dark:border-neutral-800">
         {experiences.map((experience) => (
