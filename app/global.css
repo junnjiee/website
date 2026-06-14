@@ -149,6 +149,10 @@ table {
   text-wrap: balance;
 }
 
+.title-link {
+  @apply underline decoration-neutral-500 decoration-[0.12em] underline-offset-3 transition-all hover:decoration-neutral-900 dark:decoration-neutral-500 dark:hover:decoration-neutral-100;
+}
+
 .text-description {
   @apply text-[#3b3a33] dark:text-[#d7d6d5];
 }

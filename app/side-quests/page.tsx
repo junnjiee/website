@@ -54,7 +54,7 @@ function SideQuestList({ items }: { items: SideQuest[] }) {
                 href={quest.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline decoration-neutral-500 decoration-[0.12em] underline-offset-3 transition-all hover:decoration-neutral-900 dark:decoration-neutral-500 dark:hover:decoration-neutral-100"
+                className="title-link"
               >
                 {quest.name}
               </a>
