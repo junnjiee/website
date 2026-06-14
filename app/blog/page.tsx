@@ -30,13 +30,13 @@ export default function Page() {
   return (
     <section>
       <div className="mb-12">
-        <h1 className="font-semibold text-2xl mb-8 tracking-tighter">
+        <h1 className="text-2xl font-medium tracking-tight mb-8">
           My Blog
         </h1>
         <BlogPosts />
       </div>
 
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
+      <h1 className="mb-8 text-2xl font-medium tracking-tight">
         Digital Garden
       </h1>
       <div className="space-y-5">

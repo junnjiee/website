@@ -3,7 +3,7 @@ import { Experience } from "app/components/experience";
 export default function Page() {
   return (
     <section>
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
+      <h1 className="mb-8 text-2xl font-medium tracking-tight">
         Hello, I'm Jun Jie.
       </h1>
       <p className="mb-4">

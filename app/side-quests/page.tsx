@@ -75,14 +75,14 @@ export default function Page() {
   return (
     <section className="space-y-12">
       <div>
-        <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
+        <h1 className="mb-8 text-2xl font-medium tracking-tight">
           Projects
         </h1>
         <SideQuestList items={projects} />
       </div>
 
       <div>
-        <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
+        <h1 className="mb-8 text-2xl font-medium tracking-tight">
           Experiences
         </h1>
         <SideQuestList items={experiences} />
