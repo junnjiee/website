@@ -149,14 +149,10 @@ table {
   text-wrap: balance;
 }
 
-.text-link {
-  @apply underline decoration-neutral-400 underline-offset-2 transition-all hover:decoration-neutral-800 dark:decoration-neutral-600 dark:hover:decoration-neutral-200;
-}
-
 .text-description {
-  @apply text-neutral-700 dark:text-neutral-300;
+  @apply text-[#3b3a33] dark:text-[#d7d6d5];
 }
 
 .text-muted {
-  @apply text-neutral-600 dark:text-neutral-400;
+  @apply text-[#26251e99] dark:text-[#edecec99];
 }

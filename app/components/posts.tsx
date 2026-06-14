@@ -22,10 +22,10 @@ export function BlogPosts() {
             href={`/blog/${post.slug}`}
           >
             <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-6">
-              <p className="text-muted w-[100px] shrink-0 whitespace-nowrap tabular-nums">
+              <p className="text-muted w-[100px] shrink-0 whitespace-nowrap">
                 {formatDate(post.metadata.publishedAt, false, 'short')}
               </p>
-              <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
+              <p className="font-medium text-neutral-900 dark:text-neutral-100 tracking-tight underline decoration-neutral-500 decoration-[0.12em] underline-offset-3 transition-all hover:decoration-neutral-900 dark:decoration-neutral-500 dark:hover:decoration-neutral-100">
                 {post.metadata.title}
               </p>
             </div>
