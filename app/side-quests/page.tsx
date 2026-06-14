@@ -26,30 +26,7 @@ const experiences: SideQuest[] = [
   {
     name: "GovTech GeekOut Hackathon",
     period: "2023",
-    description: (
-      <>
-        3rd place. Explored using LLMs to improve education, met really cool
-        people like{" "}
-        <a
-          href="https://github.com/euanlimzx"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-link"
-        >
-          @euanlimzx
-        </a>{" "}
-        and{" "}
-        <a
-          href="https://github.com/hrtowii"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-link"
-        >
-          @hrtowii
-        </a>
-        .
-      </>
-    ),
+    description: "3rd place. Explored using LLMs to improve education.",
   },
 ];
 
