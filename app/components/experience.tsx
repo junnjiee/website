@@ -26,7 +26,7 @@ const experiences: ExperienceItem[] = [
 export function Experience() {
   return (
     <div className="mt-10 space-y-6">
-      <h2 className="text-sm font-medium uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+      <h2 className="text-sm font-medium uppercase tracking-wider text-muted">
         Experience
       </h2>
       <div className="space-y-5 border-l border-neutral-200 pl-4 dark:border-neutral-800">
@@ -37,7 +37,7 @@ export function Experience() {
           >
             <div className="absolute -left-[21px] top-1.5 h-2.5 w-2.5 rounded-full border border-neutral-300 bg-white dark:border-neutral-700 dark:bg-neutral-950" />
             <div className="flex flex-col gap-1 md:flex-row md:gap-4">
-              <p className="shrink-0 text-sm tabular-nums text-neutral-500 dark:text-neutral-400 md:w-[120px]">
+              <p className="shrink-0 text-sm tabular-nums text-muted md:w-[120px]">
                 {experience.period}
               </p>
               <div>
@@ -45,7 +45,7 @@ export function Experience() {
                   {experience.title}
                   {experience.organisation && (
                     <>
-                      <span className="font-normal text-neutral-500 dark:text-neutral-400">
+                      <span className="font-normal text-muted">
                         {" "}
                         ·{" "}
                       </span>
@@ -53,14 +53,14 @@ export function Experience() {
                         href={experience.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-normal text-neutral-500 underline decoration-neutral-400 underline-offset-2 transition-all hover:text-neutral-900 hover:decoration-neutral-800 dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-neutral-100 dark:hover:decoration-neutral-200"
+                        className="font-normal text-muted underline decoration-neutral-400 underline-offset-2 transition-all hover:text-neutral-900 hover:decoration-neutral-800 dark:decoration-neutral-600 dark:hover:text-neutral-100 dark:hover:decoration-neutral-200"
                       >
                         {experience.organisation}
                       </a>
                     </>
                   )}
                 </h3>
-                <p className="mt-1 leading-relaxed text-neutral-700 dark:text-neutral-300">
+                <p className="mt-1 leading-relaxed text-description">
                   {experience.description}
                 </p>
               </div>

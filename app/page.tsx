@@ -1,5 +1,4 @@
 import { Experience } from "app/components/experience";
-import { BlogPosts } from "app/components/posts";
 
 export default function Page() {
   return (
@@ -8,15 +7,12 @@ export default function Page() {
         Hello, I'm Jun Jie.
       </h1>
       <p className="mb-4">
-        {` I'm from Singapore, currently studying Computer Science at NUS. I enjoy
-        learning and building software that's interesting and useful.`}
+        {`I'm from Singapore, currently studying Computer Science at NUS.`}
+        {` I enjoy building awesome software and learning about interesting 
+          ideas in CS.`}
       </p>
-      {/* <p className="mb-4"> */}
-      {/*   {`Once in a while, I do touch grass and spend time on mountains.`} */}
-      {/* </p> */}
       <div className="my-8">
         <Experience />
-        <BlogPosts />
       </div>
     </section>
   );

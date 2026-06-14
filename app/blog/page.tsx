@@ -16,7 +16,7 @@ const libraryItems: LibraryItem[] = [
   {
     name: "Compendium",
     description:
-      "A collection of notes, information, and knowledge related to my interests.",
+      "Collection of notes, information, and knowledge related to my interests.",
     href: "https://junnjiee-compendium.vercel.app/",
   },
 ];
@@ -30,7 +30,9 @@ export default function Page() {
   return (
     <section>
       <div className="mb-12">
-        <h1 className="font-semibold text-2xl mb-8 tracking-tighter">My Blog</h1>
+        <h1 className="font-semibold text-2xl mb-8 tracking-tighter">
+          My Blog
+        </h1>
         <BlogPosts />
       </div>
 
@@ -45,12 +47,12 @@ export default function Page() {
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline decoration-neutral-400 underline-offset-2 transition-all hover:decoration-neutral-800 dark:decoration-neutral-600 dark:hover:decoration-neutral-200"
+                className="underline decoration-neutral-500 decoration-[0.12em] underline-offset-3 transition-all hover:decoration-neutral-900 dark:decoration-neutral-500 dark:hover:decoration-neutral-100"
               >
                 {item.name}
               </a>
             </h2>
-            <p className="mt-2 leading-relaxed text-neutral-700 dark:text-neutral-300">
+            <p className="mt-2 leading-relaxed text-description">
               {item.description}
             </p>
           </article>
