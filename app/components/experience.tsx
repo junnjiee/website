@@ -10,40 +10,14 @@ type ExperienceItem = {
 
 const experiences: ExperienceItem[] = [
   {
-    period: "2024 - 2026",
-    title: "Singapore Army",
-    organisation: "",
-    href: "",
-    description:
-      "Sometimes I get to do cool stuff, like fast roping down a chopper or jumping out of a plane. Mostly walked a lot.",
-  },
-  {
     period: "Summer 2024",
     title: "Research Engineer Intern",
     organisation: "A*STAR ARTC",
     href: "https://www.a-star.edu.sg/artc",
     description: (
       <>
-        Developed CNN-based models for an industrial image segmentation task,
-        referencing open-source architectures such as{" "}
-        <a
-          href="https://www.sciencedirect.com/science/article/abs/pii/S0169260719307904"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-link"
-        >
-          Dense-Inception U-Net
-        </a>{" "}
-        and{" "}
-        <a
-          href="https://arxiv.org/abs/1706.05587"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-link"
-        >
-          DeepLabV3
-        </a>
-        .
+        Researched and trained CNN models to automate visual inspection in
+        manufacturing.
       </>
     ),
   },
