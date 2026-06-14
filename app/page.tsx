@@ -8,8 +8,7 @@ export default function Page() {
       </h1>
       <p className="mb-4">
         {`I'm from Singapore, currently studying Computer Science at NUS.`}
-        {` I enjoy building awesome software and learning about interesting 
-          ideas in CS.`}
+        {` I enjoy building awesome software and learning about interesting ideas in CS.`}
       </p>
       <div className="my-8">
         <Experience />
