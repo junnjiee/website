@@ -14,15 +14,15 @@ const projects: SideQuest[] = [
       "A Pi agent extension that adds Exa-powered web and agentic search tools.",
     href: "https://github.com/junnjiee/pi-exa",
   },
+  {
+    name: "Digital Commonplace",
+    description:
+      "A curation of interesting links on the internet worth keeping.",
+    href: "https://junnjiee.notion.site/commonplace",
+  },
 ];
 
 const experiences: SideQuest[] = [
-  {
-    name: "Singapore Army",
-    period: "2024 - 2026",
-    description:
-      "Sometimes I get to do cool stuff, like fast roping off a heli or jumping out of a plane. Mostly walked a lot.",
-  },
   {
     name: "GovTech GeekOut Hackathon",
     period: "2023",
@@ -75,9 +75,7 @@ export default function Page() {
   return (
     <section className="space-y-12">
       <div>
-        <h1 className="mb-8 text-2xl font-medium tracking-tight">
-          Projects
-        </h1>
+        <h1 className="mb-8 text-2xl font-medium tracking-tight">Projects</h1>
         <SideQuestList items={projects} />
       </div>
 
