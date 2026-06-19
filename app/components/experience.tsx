@@ -10,13 +10,25 @@ type ExperienceItem = {
 
 const experiences: ExperienceItem[] = [
   {
+    period: "2024 - 2026",
+    title: "Served the Military",
+    organisation: "Singapore Army",
+    href: "https://www.army.gov.sg/",
+    description: (
+      <>
+        Sometimes I got to do cool stuff, like fast roping off a heli or jumping
+        out of a plane.
+      </>
+    ),
+  },
+  {
     period: "Summer 2024",
     title: "Research Engineer Intern",
     organisation: "A*STAR ARTC",
     href: "https://www.a-star.edu.sg/artc",
     description: (
       <>
-        Researched and trained CNN models to automate visual inspection in
+        Researched and developed CNN models to automate visual inspection in
         manufacturing.
       </>
     ),
@@ -27,7 +39,7 @@ export function Experience() {
   return (
     <div className="mt-10 space-y-6">
       <h2 className="text-sm font-medium uppercase tracking-wider text-muted">
-        Experience
+        Life so far
       </h2>
       <div className="space-y-5 border-l border-neutral-200 pl-4 dark:border-neutral-800">
         {experiences.map((experience) => (
@@ -36,7 +48,7 @@ export function Experience() {
             className="relative"
           >
             <div className="absolute -left-[21px] top-1.5 h-2.5 w-2.5 rounded-full border border-neutral-300 bg-white dark:border-neutral-700 dark:bg-neutral-950" />
-            <div className="flex flex-col gap-1 md:flex-row md:gap-4">
+            <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:gap-4">
               <p className="shrink-0 text-sm tabular-nums text-muted md:w-[120px]">
                 {experience.period}
               </p>
@@ -45,10 +57,7 @@ export function Experience() {
                   {experience.title}
                   {experience.organisation && (
                     <>
-                      <span className="font-normal text-muted">
-                        {" "}
-                        ·{" "}
-                      </span>
+                      <span className="font-normal text-muted"> · </span>
                       <a
                         href={experience.href}
                         target="_blank"
