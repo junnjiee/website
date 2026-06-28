@@ -92,13 +92,14 @@ export default async function Blog({
           }),
         }}
       />
-      <h1 className="title text-3xl font-normal tracking-tight">
-        {post.metadata.title}
-      </h1>
-      <div className="flex justify-between items-center mt-2 mb-8 text-sm">
-        <p className="text-sm text-muted">
+      <div className="mb-8">
+        <p className="text-sm text-muted mb-2">
           {formatDate(post.metadata.publishedAt, false, 'short')}
         </p>
+        <h1 className="title text-3xl font-normal tracking-tight">
+          {post.metadata.title}
+        </h1>
+        <p className="text-sm text-muted mt-2">{post.metadata.readingTime}</p>
       </div>
       <article className="prose">
         <CustomMDX source={post.content} />
