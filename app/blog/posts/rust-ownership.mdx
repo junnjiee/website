@@ -1,82 +1,54 @@
 ---
-title: "Rust’s Ownership System, for the Curious"
+title: "A Primer on Memory Rules in Rust"
 publishedAt: 2026-06-28
-summary: "A short note on Rust's ownership system and how it prevents common memory errors."
+summary: "A short note on Rust's memory management rules and how it prevents common memory errors."
 readingTime: "4 min read"
 ---
 
-Personally, what makes Rust so fun and intriguing as a beginner to the language and systems programming, is the way it handles memory management.
+This is meant to be a short note on Rust's ownership and borrowing principles, and how they prevent the most common memory bugs from happening.
 
-This is a short post on Rust's memory management system, and hopefully it'll make you a little more interested in Rust.
+# Stack and Heap
 
-# Wait, what is Rust for?
+Before diving into memory management, we will quickly recall how the stack and heap work.
 
-Some use-cases for Rust include
+The stack and heap are parts of memory available at runtime, structured differently. 
 
-- dev tools
-- operating systems
-- databases/storage engines
+To push data onto the stack, data size must be known at compile time.
 
-It gives you the speed and low-level control of C++, with stronger safety checks around memory.
+Data with an unknown size or a size that might change must be allocated on the heap, with a pointer to its heap address pushed onto the stack.
 
-# A Quick Rundown on Ownership
+Ownership applies to all Rust values, but it's most visible with heap-allocated data, since Rust must know exactly when to free the heap allocations.
 
-Rust has three fundamental ownership rules, which govern how memory is managed
+# Ownership
 
+Rust has three fundamental ownership rules, which govern how memory is managed:
 1. A value must have an owner
 2. A value must only have one owner
-3. When the owner goes out of scope, its value is dropped
+3. When the owner goes out of scope, the value is dropped
 
 <br></br>
 ```rust
 fn main() {
-  let p = 1;
+  let p = String::new();
   let q = p; // owner is now q
 } // q out of scope, value dropped
 ```
 
-Single ownership makes the responsibility of freeing memory very clear, since two owners trying to free the same memory allocation is *unsafe*.
+Single ownership makes the responsibility of freeing memory very clear, since multiple owners trying to free the same memory allocation is *unsafe*.
 
-Automatically dropping values after they go out of scope also prevents accidental memory leaks.
-
-# Borrowing instead of Owning
+# References and Borrowing
 
 References allow callers to borrow data without taking ownership.
 
-Note that a borrow can end at its last use, instead of adhering to *lexical scope*. Keep this concept in mind when reference scopes are mentioned.
+Due to non-lexical lifetimes, a borrow ends at its last use instead of at the end of its surrounding lexical scope.
 
-### 1. Multiple immutable refs can exist for a value
-There are no problems doing multiple read-only references.
+The following are the rules of references that prevent common memory bugs from happening.
 
-### 2. Only one mutable ref can exist for a value in a scope
-```rust
-fn main() {
-  let mut a = String::from("hello");
+### 1. Either one mutable reference or multiple immutable references can exist for a value
 
-  let b = &mut a;
-  let c = &mut a; // compiler throws
+This avoids *aliasing bugs* where one part of the code assumes a value is stable, while another part changes it underneath. Across threads, the single mutable reference rule also helps prevent data races.
 
-  println!("{} {}", b, c);
-}
-```
-Multiple writes to the same value at the same time can cause *data races* and *aliasing bugs*. Thus Rust only allows one mutable reference at a time.
-
-### 3. Mutable and immutable refs can't exist for the same value in the same scope
-```rust
-fn main() {
-  let mut x = String::from("world");
-
-  let y = &x;
-  let z = &mut x; // compiler throws
-  
-  println!("{} {}", y, z);
-}
-```
-If a value is being read through an immutable ref, Rust prevents that same value from being mutated at the same time.
-
-This avoids *aliasing bugs* where one part of the code assumes a value is stable, while another part changes it underneath.
-
-### 4. Refs must always point to valid data
+### 2. References must always point to valid data
 ```rust
 fn main() {
   let r;
@@ -88,11 +60,9 @@ fn main() {
   println!("{}", r);
 }
 ```
-Prevents *dangling pointers*, as the compiler checks for refs that outlive its owner.
-
+This check prevents *dangling pointers* from being accessed, as the compiler rejects references that outlive their owner.
 
 # Conclusion
 
-To sum it all up, we went through the basics of memory management in Rust, and we saw how these simple yet opinionated rules can help mitigate common memory bugs!
+To sum it all up, we briefly talked about the stack and heap, covered the fundamentals of ownership and borrowing, and reasoned about how these rules can help mitigate common memory issues.
 
-If you want to learn more about Rust, [The Book](https://doc.rust-lang.org/book/) and [Rustlings](https://rustlings.rust-lang.org) are a great way to start!
