@@ -1,7 +1,44 @@
 import { notFound } from 'next/navigation'
+import { ChevronDown } from 'lucide-react'
 import { CustomMDX } from 'app/components/mdx'
 import { formatDate, getBlogPosts } from 'app/blog/utils'
 import { baseUrl } from 'app/sitemap'
+
+function cx(...classes: (string | false)[]) {
+  return classes.filter(Boolean).join(' ')
+}
+
+function TableOfContents({ items }) {
+  if (items.length === 0) {
+    return null
+  }
+
+  return (
+    <details
+      open
+      className="mb-8 rounded border border-neutral-200 bg-neutral-50 px-4 py-3 dark:border-neutral-800 dark:bg-neutral-900"
+    >
+      <summary className="flex cursor-pointer list-none items-center justify-between text-sm text-muted">
+        <span>Table of Contents</span>
+        <ChevronDown className="toc-chevron h-4 w-4" aria-hidden="true" />
+      </summary>
+      <nav className="mt-3 flex flex-col gap-1">
+        {items.map((item) => (
+          <a
+            key={item.slug}
+            href={`#${item.slug}`}
+            className={cx(
+              'text-sm text-neutral-800 no-underline transition-colors hover:text-neutral-950 dark:text-neutral-200 dark:hover:text-neutral-50',
+              item.level === 2 && 'pl-3'
+            )}
+          >
+            {item.text}
+          </a>
+        ))}
+      </nav>
+    </details>
+  )
+}
 
 export async function generateStaticParams() {
   let posts = getBlogPosts()
@@ -101,6 +138,7 @@ export default async function Blog({
         </h1>
         <p className="text-sm text-muted mt-2">{post.metadata.readingTime}</p>
       </div>
+      <TableOfContents items={post.tableOfContents} />
       <article className="prose">
         <CustomMDX source={post.content} />
       </article>

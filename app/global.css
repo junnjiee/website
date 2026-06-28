@@ -160,3 +160,7 @@ table {
 .text-muted {
   @apply text-[#26251e99] dark:text-[#edecec99];
 }
+
+details[open] .toc-chevron {
+  transform: rotate(180deg);
+}

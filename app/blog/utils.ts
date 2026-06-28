@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import { getTableOfContents } from './toc'
 
 type Metadata = {
   title: string
@@ -46,6 +47,7 @@ function getMDXData(dir) {
       metadata,
       slug,
       content,
+      tableOfContents: getTableOfContents(content),
     }
   })
 }
