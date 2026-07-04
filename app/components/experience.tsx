@@ -16,7 +16,7 @@ const experiences: ExperienceItem[] = [
     href: "https://www.army.gov.sg/",
     description: (
       <>
-        Sometimes I got to do cool stuff, like fast roping off a heli or jumping
+        Sometimes I get to do cool stuff, like fast roping off a heli or jumping
         out of a plane.
       </>
     ),
