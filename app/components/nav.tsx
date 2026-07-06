@@ -23,7 +23,7 @@ export function Navbar() {
   const isHomeActive = pathname === '/'
 
   return (
-    <aside className="mb-20 tracking-tight">
+    <aside className="mb-20 text-[17px] tracking-tight text-[#5f735f]">
       <div className="lg:sticky lg:top-20">
         <nav
           className="relative flex w-full flex-row items-start justify-between px-0 pb-0"
@@ -32,9 +32,9 @@ export function Navbar() {
           <Link
             href="/"
             className={[
-              'group relative flex w-[6.8rem] align-middle py-1 pr-2 underline-offset-4 transition-all [perspective:600px] hover:text-neutral-800 dark:hover:text-neutral-200',
+              'group relative flex w-[6.8rem] align-middle py-1 pr-2 underline-offset-4 transition-all [perspective:600px] hover:text-[#5f735f]',
               isHomeActive
-                ? 'underline decoration-neutral-700 dark:decoration-neutral-200'
+                ? 'underline decoration-[#5f735f]'
                 : 'no-underline',
             ].join(' ')}
           >
@@ -61,7 +61,7 @@ export function Navbar() {
                   href={path}
                   className={[
                     navSerif.className,
-                    'relative ml-4 flex align-middle py-1 pl-2 transition-all hover:text-neutral-800 dark:hover:text-neutral-200',
+                    'relative ml-4 flex align-middle py-1 pl-2 transition-all hover:text-[#5f735f]',
                     'after:absolute after:bottom-0 after:left-2 after:h-px after:w-[calc(100%-0.5rem)] after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 hover:after:scale-x-100',
                     isActive ? 'after:scale-x-100' : '',
                   ].join(' ')}

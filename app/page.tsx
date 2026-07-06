@@ -8,7 +8,7 @@ const manrope = Manrope({
 export default function Page() {
   return (
     <section
-      className={`${manrope.className} font-light text-[20.5px] leading-relaxed dark:text-[#b8b4aa] space-y-7`}
+      className={`${manrope.className} quiet-rise font-normal text-[20.5px] leading-relaxed text-[#253628] space-y-7`}
     >
       <h1 className="mb-10">hello, i'm jun jie.</h1>
       <p>
@@ -22,10 +22,10 @@ export default function Page() {
           nus
         </a>
         {`. `}
-        {`i enjoy building awesome software and learning about interesting ideas in cs.`}
+        {`i enjoy building awesome software and learning about interesting concepts in cs.`}
       </p>
       <p>
-        {`before that, i was at `}
+        {`previously, i was at `}
         <a
           href="https://www.a-star.edu.sg/"
           target="_blank"

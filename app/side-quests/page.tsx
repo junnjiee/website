@@ -40,7 +40,7 @@ function SideQuestList({ items }: { items: SideQuest[] }) {
     <div className="space-y-5">
       {items.map((quest) => (
         <article key={quest.name}>
-          <h2 className="font-medium tracking-tight text-neutral-900 dark:text-neutral-100">
+          <h2 className="font-medium tracking-tight text-[#253628]">
             {quest.period ? (
               <>
                 {quest.name}
@@ -74,13 +74,13 @@ function SideQuestList({ items }: { items: SideQuest[] }) {
 export default function Page() {
   return (
     <section className="space-y-12">
-      <div>
-        <h1 className="mb-8 text-2xl font-medium tracking-tight">Projects</h1>
+      <div className="quiet-rise">
+        <h1 className="mb-8 text-2xl font-normal tracking-tight">Projects</h1>
         <SideQuestList items={projects} />
       </div>
 
-      <div>
-        <h1 className="mb-8 text-2xl font-medium tracking-tight">
+      <div className="quiet-rise [--quiet-delay:125ms]">
+        <h1 className="mb-8 text-2xl font-normal tracking-tight">
           Experiences
         </h1>
         <SideQuestList items={experiences} />

@@ -16,7 +16,7 @@ function TableOfContents({ items }) {
   return (
     <details
       open
-      className="mb-8 rounded border border-neutral-200 bg-neutral-50 px-4 py-3 dark:border-neutral-800 dark:bg-neutral-900"
+      className="mb-8 rounded border border-[#c7d8c4] bg-[#d3e2d0] px-4 py-3"
     >
       <summary className="flex cursor-pointer list-none items-center justify-between text-sm text-muted">
         <span>Table of Contents</span>
@@ -28,7 +28,7 @@ function TableOfContents({ items }) {
             key={item.slug}
             href={`#${item.slug}`}
             className={cx(
-              'text-sm text-neutral-800 no-underline transition-colors hover:text-neutral-950 dark:text-neutral-200 dark:hover:text-neutral-50',
+              'text-sm text-[#4f664f] no-underline transition-colors hover:text-[#253628]',
               item.level === 2 && 'pl-3'
             )}
           >

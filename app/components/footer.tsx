@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <footer className="mb-16">
-      <ul className="font-sm mt-12 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
+    <footer className="quiet-rise mb-16 [--quiet-delay:250ms]">
+      <ul className="font-sm mt-12 flex flex-row flex-wrap gap-x-4 gap-y-2 text-[17px] text-[#5f735f]">
         <li>
           <a
             className="title-link"
@@ -43,7 +43,7 @@ export default function Footer() {
           </a>
         </li>
       </ul>
-      {/* <p className="mt-8 text-neutral-600 dark:text-neutral-300"> */}
+      {/* <p className="mt-8 text-[#6d806c]"> */}
       {/*   © {new Date().getFullYear()} MIT Licensed */}
       {/* </p> */}
     </footer>
