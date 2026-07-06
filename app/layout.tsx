@@ -1,27 +1,26 @@
-import './global.css'
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import { GeistMono } from 'geist/font/mono'
-import { Navbar } from './components/nav'
-import { Analytics } from '@vercel/analytics/react'
-import { SpeedInsights } from '@vercel/speed-insights/next'
-import Footer from './components/footer'
-import { baseUrl } from './sitemap'
+import "./global.css";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import { GeistMono } from "geist/font/mono";
+import { Navbar } from "./components/nav";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { baseUrl } from "./sitemap";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'junnjiee',
-    template: '%s | junnjiee',
+    default: "junnjiee",
+    template: "%s | junnjiee",
   },
   description: "junnjiee's personal website",
   openGraph: {
-    title: 'junnjiee',
+    title: "junnjiee",
     description: "junnjiee's personal website",
     url: baseUrl,
-    siteName: 'junnjiee',
-    locale: 'en_US',
-    type: 'website',
+    siteName: "junnjiee",
+    locale: "en_US",
+    type: "website",
   },
   robots: {
     index: true,
@@ -29,40 +28,39 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
-}
+};
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
-const cx = (...classes) => classes.filter(Boolean).join(' ')
+const cx = (...classes) => classes.filter(Boolean).join(" ");
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html
       lang="en"
       className={cx(
-        'text-[#26251e] bg-[#f7f7f4] dark:text-[#edecec] dark:bg-[#14120b]',
+        "text-[#253628] bg-[#dfeadd]",
         inter.className,
-        GeistMono.variable
+        GeistMono.variable,
       )}
     >
-      <body className="antialiased max-w-xl mx-4 mt-8 md:mx-auto">
+      <body className="antialiased max-w-[39rem] mx-4 mt-16 pt-3 md:mx-auto">
         <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
           <Navbar />
           {children}
-          <Footer />
           <Analytics />
           <SpeedInsights />
         </main>
       </body>
     </html>
-  )
+  );
 }

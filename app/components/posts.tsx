@@ -25,7 +25,7 @@ export function BlogPosts() {
               <p className="text-muted w-[100px] shrink-0 whitespace-nowrap">
                 {formatDate(post.metadata.publishedAt, false, 'short')}
               </p>
-              <p className="font-medium text-neutral-900 dark:text-neutral-100 tracking-tight title-link">
+              <p className="font-medium text-[#253628] tracking-tight transition-colors hover:text-[#5f735f]">
                 {post.metadata.title}
               </p>
             </div>
