@@ -1,22 +1,37 @@
 import { baseUrl } from 'app/sitemap'
-import { getBlogPosts } from 'app/blog/utils'
+import { getBlogPosts, sortBlogPosts } from 'app/blog/utils'
+
+export const dynamic = 'force-static'
+
+function escapeXml(value: string) {
+  return value.replace(/[<>&'"]/g, (character) => {
+    switch (character) {
+      case '<':
+        return '&lt;'
+      case '>':
+        return '&gt;'
+      case '&':
+        return '&amp;'
+      case "'":
+        return '&apos;'
+      case '"':
+        return '&quot;'
+      default:
+        return character
+    }
+  })
+}
 
 export async function GET() {
-  let allBlogs = await getBlogPosts()
+  let allBlogs = getBlogPosts()
 
-  const itemsXml = allBlogs
-    .sort((a, b) => {
-      if (new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)) {
-        return -1
-      }
-      return 1
-    })
+  const itemsXml = sortBlogPosts(allBlogs)
     .map(
       (post) =>
         `<item>
-          <title>${post.metadata.title}</title>
+          <title>${escapeXml(post.metadata.title)}</title>
           <link>${baseUrl}/blog/${post.slug}</link>
-          <description>${post.metadata.summary || ''}</description>
+          <description>${escapeXml(post.metadata.summary || '')}</description>
           <pubDate>${new Date(
             post.metadata.publishedAt
           ).toUTCString()}</pubDate>
@@ -36,7 +51,7 @@ export async function GET() {
 
   return new Response(rssFeed, {
     headers: {
-      'Content-Type': 'text/xml',
+      'Content-Type': 'application/rss+xml; charset=utf-8',
     },
   })
 }

@@ -1,8 +1,8 @@
 import fs from 'fs'
 import path from 'path'
-import { getTableOfContents } from './toc'
+import { getTableOfContents, type TableOfContentsItem } from './toc'
 
-type Metadata = {
+export type BlogMetadata = {
   title: string
   publishedAt: string
   summary: string
@@ -10,34 +10,70 @@ type Metadata = {
   image?: string
 }
 
-function parseFrontmatter(fileContent: string) {
-  let frontmatterRegex = /---\s*([\s\S]*?)\s*---/
-  let match = frontmatterRegex.exec(fileContent)
-  let frontMatterBlock = match![1]
-  let content = fileContent.replace(frontmatterRegex, '').trim()
-  let frontMatterLines = frontMatterBlock.trim().split('\n')
-  let metadata: Partial<Metadata> = {}
-
-  frontMatterLines.forEach((line) => {
-    let [key, ...valueArr] = line.split(': ')
-    let value = valueArr.join(': ').trim()
-    value = value.replace(/^['"](.*)['"]$/, '$1') // Remove quotes
-    metadata[key.trim() as keyof Metadata] = value
-  })
-
-  return { metadata: metadata as Metadata, content }
+export type BlogPost = {
+  metadata: BlogMetadata
+  slug: string
+  content: string
+  tableOfContents: TableOfContentsItem[]
 }
 
-function getMDXFiles(dir) {
+type ParsedMDXFile = {
+  metadata: BlogMetadata
+  content: string
+}
+
+const requiredMetadataFields = [
+  'title',
+  'publishedAt',
+  'summary',
+  'readingTime',
+] as const
+
+function parseFrontmatter(fileContent: string): ParsedMDXFile {
+  let frontmatterRegex = /^---\s*([\s\S]*?)\s*---/
+  let match = frontmatterRegex.exec(fileContent)
+
+  if (!match) {
+    throw new Error('MDX file is missing frontmatter')
+  }
+
+  let frontMatterBlock = match[1]
+  let content = fileContent.replace(frontmatterRegex, '').trim()
+  let frontMatterLines = frontMatterBlock.trim().split('\n')
+  let metadata: Partial<BlogMetadata> = {}
+
+  frontMatterLines.forEach((line) => {
+    let separatorIndex = line.indexOf(':')
+
+    if (separatorIndex === -1) {
+      return
+    }
+
+    let key = line.slice(0, separatorIndex).trim() as keyof BlogMetadata
+    let value = line.slice(separatorIndex + 1).trim()
+    value = value.replace(/^['"](.*)['"]$/, '$1')
+    metadata[key] = value
+  })
+
+  requiredMetadataFields.forEach((field) => {
+    if (!metadata[field]) {
+      throw new Error(`MDX frontmatter is missing "${field}"`)
+    }
+  })
+
+  return { metadata: metadata as BlogMetadata, content }
+}
+
+function getMDXFiles(dir: string): string[] {
   return fs.readdirSync(dir).filter((file) => path.extname(file) === '.mdx')
 }
 
-function readMDXFile(filePath) {
+function readMDXFile(filePath: string): ParsedMDXFile {
   let rawContent = fs.readFileSync(filePath, 'utf-8')
   return parseFrontmatter(rawContent)
 }
 
-function getMDXData(dir) {
+function getMDXData(dir: string): BlogPost[] {
   let mdxFiles = getMDXFiles(dir)
   return mdxFiles.map((file) => {
     let { metadata, content } = readMDXFile(path.join(dir, file))
@@ -52,8 +88,20 @@ function getMDXData(dir) {
   })
 }
 
-export function getBlogPosts() {
+export function getBlogPosts(): BlogPost[] {
   return getMDXData(path.join(process.cwd(), 'app', 'blog', 'posts'))
+}
+
+export function getBlogPost(slug: string): BlogPost | undefined {
+  return getBlogPosts().find((post) => post.slug === slug)
+}
+
+export function sortBlogPosts(posts: BlogPost[]): BlogPost[] {
+  return [...posts].sort(
+    (a, b) =>
+      new Date(b.metadata.publishedAt).getTime() -
+      new Date(a.metadata.publishedAt).getTime()
+  )
 }
 
 export function formatDate(

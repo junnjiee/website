@@ -1,14 +1,26 @@
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { ChevronDown } from 'lucide-react'
 import { CustomMDX } from 'app/components/mdx'
-import { formatDate, getBlogPosts } from 'app/blog/utils'
+import { formatDate, getBlogPost, getBlogPosts } from 'app/blog/utils'
 import { baseUrl } from 'app/sitemap'
+import type { TableOfContentsItem } from 'app/blog/toc'
 
-function cx(...classes: (string | false)[]) {
+function cx(...classes: (string | false | null | undefined)[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-function TableOfContents({ items }) {
+function absoluteUrl(pathOrUrl: string) {
+  return new URL(pathOrUrl, baseUrl).toString()
+}
+
+function getPostImageUrl(title: string, image?: string) {
+  return image
+    ? absoluteUrl(image)
+    : `${baseUrl}/og?title=${encodeURIComponent(title)}`
+}
+
+function TableOfContents({ items }: { items: TableOfContentsItem[] }) {
   if (items.length === 0) {
     return null
   }
@@ -52,9 +64,9 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>
-}) {
+}): Promise<Metadata | undefined> {
   const { slug } = await params
-  let post = getBlogPosts().find((post) => post.slug === slug)
+  let post = getBlogPost(slug)
   if (!post) {
     return
   }
@@ -65,9 +77,7 @@ export async function generateMetadata({
     summary: description,
     image,
   } = post.metadata
-  let ogImage = image
-    ? image
-    : `${baseUrl}/og?title=${encodeURIComponent(title)}`
+  let ogImage = getPostImageUrl(title, image)
 
   return {
     title,
@@ -99,7 +109,7 @@ export default async function Blog({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  let post = getBlogPosts().find((post) => post.slug === slug)
+  let post = getBlogPost(slug)
 
   if (!post) {
     notFound()
@@ -118,9 +128,7 @@ export default async function Blog({
             datePublished: post.metadata.publishedAt,
             dateModified: post.metadata.publishedAt,
             description: post.metadata.summary,
-            image: post.metadata.image
-              ? `${baseUrl}${post.metadata.image}`
-              : `/og?title=${encodeURIComponent(post.metadata.title)}`,
+            image: getPostImageUrl(post.metadata.title, post.metadata.image),
             url: `${baseUrl}/blog/${post.slug}`,
             author: {
               '@type': 'Person',

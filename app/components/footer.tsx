@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="quiet-rise mb-16 [--quiet-delay:250ms]">
-      <ul className="font-sm mt-12 flex flex-row flex-wrap gap-x-4 gap-y-2 text-[17px] text-[#5f735f]">
+      <ul className="font-sm mt-12 flex flex-row flex-wrap gap-x-4 gap-y-2 text-[17px] text-[#4d634f]">
         <li>
           <a
             className="title-link"
