@@ -150,7 +150,11 @@ table {
 }
 
 .title-link {
-  @apply underline decoration-neutral-500 decoration-[0.12em] underline-offset-3 transition-all hover:decoration-neutral-900 dark:decoration-neutral-500 dark:hover:decoration-neutral-100;
+  @apply relative inline-flex no-underline transition-colors after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-full after:bg-neutral-400 hover:text-neutral-800 hover:after:bg-current dark:after:bg-neutral-600 dark:hover:text-neutral-100;
+}
+
+.landing-link {
+  @apply underline decoration-neutral-400 decoration-[1px] underline-offset-5 transition-colors hover:text-neutral-800 hover:decoration-current dark:decoration-neutral-600 dark:hover:text-neutral-100;
 }
 
 .text-description {
