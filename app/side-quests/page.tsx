@@ -31,7 +31,7 @@ const experiences: SideQuest[] = [
 ];
 
 export const metadata = {
-  title: "Side Quests",
+  title: "side quests",
   description: "junnjiee's side projects",
 };
 
